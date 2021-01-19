@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    // MARK: Properties
+    // MARK: UI Properties
     let buttonStackView = UIStackView()
     let correctWordLabel = UILabel()
     var letterButtons = [UIButton]()
@@ -17,11 +17,30 @@ class ViewController: UIViewController {
     let stackView = UIStackView()
     let topStackView = UIStackView()
     let treeImageView = UIImageView()
-
     
-    // MARK: Methods
+    // MARK: Properties
+    var currentGame: Game!
+        let incorrectMovesAllowed = 7
+        var listDrinks = ["Виски", "Кола", "Лимонад", "Сок", "Молоко", "Пиво", "Вода", "Кофе", "Чай"].shuffled() // shuffled() - случайный порядок
+        var totalWins = 0{
+            didSet{
+                newRound()
+            }
+        }
+        var totalLosses = 0{
+            didSet{
+                newRound()
+            }
+        }
+        
+    // MARK: UI Methods
     @objc func buttonPressed(_ sender: UIButton){
-        print(sender.title(for: .normal) ?? "nil")
+        //print(sender.title(for: .normal) ?? "nil")
+        
+        sender.isEnabled = false
+        let letter = sender.title(for: .normal)!
+        currentGame.playerGuessed(letter: Character(letter))
+        updateState()
     }
 
     
@@ -36,6 +55,7 @@ class ViewController: UIViewController {
             }
             
             button.setTitle(title, for: [])
+            button.setTitleColor(.systemGray, for: .disabled) //normal - кнопка не нажата
             button.setTitleColor(.systemBlue, for: .normal) //normal - кнопка не нажата
             button.setTitleColor(.systemTeal, for: .highlighted) //highlighted - нажали на кнопку
             button.titleLabel?.textAlignment = .center
@@ -55,10 +75,56 @@ class ViewController: UIViewController {
         }
     }
     
+    // MARK: Methods
+    func enableButtons(_ enable: Bool = true){
+        for button in letterButtons{
+            button.isEnabled = enable
+        }
+    }
+    
+    func newRound(){
+        guard !listDrinks.isEmpty else{ //проверка того, что в списке слов кончились слова
+            enableButtons(false)
+            updateUI()
+            return
+        }
+        
+        let newWord = listDrinks.removeFirst()
+        currentGame = Game(word: newWord, incorrectMovesRemaining: incorrectMovesAllowed)
+        updateUI()
+        enableButtons()
+    }
+    
+    func updatecorrectWordLabel(){
+        var displayWord = [String]()
+        for letter in currentGame.guessedWord{
+            displayWord.append(String(letter))
+        }
+        correctWordLabel.text = displayWord.joined(separator: " ")
+    }
+    
+    func updateState(){
+        if currentGame.incorrectMovesRemaining < 1 {
+            totalLosses += 1
+        }else if currentGame.guessedWord == currentGame.word{
+            totalWins += 1
+        }
+        updateUI()
+    }
+    
     func updateUI(to size: CGSize){
         topStackView.axis = size.height > size.width ? .vertical : .horizontal
         topStackView.frame = CGRect(x: 10, y: 10, width: size.width-20, height: size.height-20)
+
     }
+    
+    func updateUI(){
+            let movesRemaining = currentGame.incorrectMovesRemaining
+            let treeName = "Tree\(movesRemaining < 0 ? 0 : movesRemaining < 8 ? movesRemaining : 7)"
+            treeImageView.image = UIImage(named: treeName)
+            scoreLabel.text = "Выигрыши: \(totalWins), проигрыши: \(totalLosses)"
+            updatecorrectWordLabel()
+        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,6 +169,8 @@ class ViewController: UIViewController {
         
         updateUI(to: view.bounds.size)
         initLetterButton()
+        
+        newRound()
     }
 
     // функция срабатывает при повороте экрана
