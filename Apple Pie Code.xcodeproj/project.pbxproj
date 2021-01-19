@@ -40,6 +40,7 @@
 		79F7E9A725B582DB006CD61E = {
 			isa = PBXGroup;
 			children = (
+				7914E7FC25B6A1DD0098188F /* README.md */,
 				79F7E9B225B582DB006CD61E /* Apple Pie Code */,
 				79F7E9B125B582DB006CD61E /* Products */,
 			);
@@ -62,7 +63,6 @@
 				7914E7F825B69BDC0098188F /* game.swift */,
 				79F7E9C125B582DC006CD61E /* Info.plist */,
 				79F7E9B725B582DB006CD61E /* ViewController.swift */,
-				7914E7FC25B6A1DD0098188F /* README.md */,
 			);
 			path = "Apple Pie Code";
 			sourceTree = "<group>";
