@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7914E7F925B69BDC0098188F /* game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7914E7F825B69BDC0098188F /* game.swift */; };
+		7914E7FD25B6A1DD0098188F /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 7914E7FC25B6A1DD0098188F /* README.md */; };
 		79F7E9B425B582DB006CD61E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F7E9B325B582DB006CD61E /* AppDelegate.swift */; };
 		79F7E9B825B582DB006CD61E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F7E9B725B582DB006CD61E /* ViewController.swift */; };
 		79F7E9BD25B582DC006CD61E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79F7E9BC25B582DC006CD61E /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		7914E7F825B69BDC0098188F /* game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = game.swift; sourceTree = "<group>"; };
+		7914E7FC25B6A1DD0098188F /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		79F7E9B025B582DB006CD61E /* Apple Pie Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apple Pie Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79F7E9B325B582DB006CD61E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79F7E9B725B582DB006CD61E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				7914E7F825B69BDC0098188F /* game.swift */,
 				79F7E9C125B582DC006CD61E /* Info.plist */,
 				79F7E9B725B582DB006CD61E /* ViewController.swift */,
+				7914E7FC25B6A1DD0098188F /* README.md */,
 			);
 			path = "Apple Pie Code";
 			sourceTree = "<group>";
@@ -121,6 +124,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7914E7FD25B6A1DD0098188F /* README.md in Resources */,
 				79F7E9BD25B582DC006CD61E /* Assets.xcassets in Resources */,
 				79F7E9CB25B584EF006CD61E /* Default-568h@2x.png in Resources */,
 			);
